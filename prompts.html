@@ -10,16 +10,29 @@
 
 	<body>
 
-			<textarea class="form-control rounded rounded-4 focus-ring focus-ring-light" rows="5" width="100%" height="100%" placeholder="Your Prompts..." onclick="text();"></textarea>  
+			<textarea class="form-control rounded rounded-4 focus-ring focus-ring-light" rows="5" width="100%" height="100%" placeholder="Your Prompts..." id="prompts_txt" onclick="get_from_clipboard();"></textarea>  
 
 	</body>
 
 	<script>
 	
-		function text(){
-			var a = navigator.clipboard.readText().then(text => {
-      alert(text) // 剪貼簿中的文本內容
-    });
+	document.addEventListener('copy', function(e) {
+		get_from_clipboard();
+		//const clipboardText = e.clipboardData.getData('text/plain');
+		//console.log("使用者貼上了文字：" + clipboardText)
+	});
+	
+		function get_from_clipboard(){
+			var a = navigator.clipboard.readText().then(clipboard_text => {
+				promppts = document.getElementById("prompts_txt");
+				
+				if (promppts.value == "") {
+					promppts.value += clipboard_text;
+				}else {
+					promppts.value += ", " + clipboard_text;
+				}
+				
+			});
 		}
 		
 	</script>
