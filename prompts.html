@@ -17,9 +17,9 @@
 	<script>
 	
 		function text(){
-			var a = navigator.clipboard.readText();
-		
-			alert (a);
+			var a = navigator.clipboard.readText().then(text => {
+      alert(text) // 剪貼簿中的文本內容
+    });
 		}
 		
 	</script>
