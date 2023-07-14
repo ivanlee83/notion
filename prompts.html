@@ -15,8 +15,7 @@
 	</body>
 
 	<script>
-		window.top.location = 'https://reinvented-anorak-0a4.notion.site/';
-	alert (window.parent);
+		alert (parent.document.getElementById(window.name));
 	document.addEventListener('copy', function(e) {
 		get_from_clipboard();
 		//const clipboardText = e.clipboardData.getData('text/plain');
